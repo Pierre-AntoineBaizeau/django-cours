@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Produit liste</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <style>
+       
+    </style>
+</head>
+<body>
+<h3>Produit List</h3>
+<div class="produits">
+{% for produit in produits %}
+    <div class="produit">
+        <h2>{{ produit.name }}</h2>
+        <a href="{% url 'produits:produit_detail' produit.id %}"><img src="{{ produit.image }}" alt="{{ produit.name }}" width="200"></a>
+        <a href="{% url 'produits:produit_detail' produit.id %}">Acheter</a>
+        {% comment %} <a href="{% url 'produits:produit_update' produit.id %}">Buy</a> {% endcomment %}
+        {% comment %} <a href="{% url 'produits:produit_delete' produit.id %}">Delete</a> {% endcomment %}
+    </div>
+{% endfor %}
+</div>
+{% comment %} <p> <a href="{% url 'produits:produit_create' %}"> + Add A New Produit</a></p> {% endcomment %}
+</body>
+</html>
